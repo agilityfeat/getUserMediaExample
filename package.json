@@ -1,0 +1,10 @@
+{
+  "name": "webrtc-basics",
+  "description": "RealTimeWeekly WebRTC Basics",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "ejs": "0.8.4"
+  }
+}
