@@ -7,23 +7,17 @@
 	</div>
 	
 	<script>
-		navigator.getUserMedia = navigator.getUserMedia || 
+		navigator.getUserMedia = navigator.getUserMedia ||
 		navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 		var constraints = {audio: true, video: true};
 		var videoArea = document.querySelector("video");
-		
-		function onSuccess(stream) { 
-			window.stream = stream; 
-			if (window. URL) {
-				videoArea.src = window.URL.createObjectURL( stream); 
-			} else {  
-				videoArea.src = stream; 
-			} 
-			videoArea.play(); 
-		} 
-		
-		function onError(error) { 
-			console.log("Error with getUserMedia: ", error); 
+
+		function onSuccess(stream) {
+          videoArea.srcObject = stream;
+		}
+
+		function onError(error) {
+			console.log("Error with getUserMedia: ", error);
 		}
 
 		navigator.getUserMedia(constraints, onSuccess, onError);
