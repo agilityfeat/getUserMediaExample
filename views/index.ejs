@@ -7,26 +7,14 @@
 	</div>
 	
 	<script>
-		navigator.getUserMedia = navigator.getUserMedia || 
-		navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-		var constraints = {audio: true, video: true};
-		var videoArea = document.querySelector("video");
-		
-		function onSuccess(stream) { 
-			window.stream = stream; 
-			if (window. URL) {
-				videoArea.src = window.URL.createObjectURL( stream); 
-			} else {  
-				videoArea.src = stream; 
-			} 
-			videoArea.play(); 
-		} 
-		
-		function onError(error) { 
-			console.log("Error with getUserMedia: ", error); 
-		}
+		var streamConstraints = {audio: true, video: true};
+		var localVideo = document.querySelector("video");
 
-		navigator.getUserMedia(constraints, onSuccess, onError);
+        navigator.mediaDevices.getUserMedia(streamConstraints).then(function (stream) {
+          localVideo.srcObject = stream; //shows stream to user
+        }).catch(function (err) {
+          console.log('An error ocurred when accessing media devices');
+        });
 	</script>
 	
 </body>
